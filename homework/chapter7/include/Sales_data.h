@@ -10,7 +10,7 @@ public:
   Sales_data() = default;
   Sales_data(const std::string &s, unsigned n, double p) : bookNo(s), units_sold(n), revenue(p * n) {}
   Sales_data(const std::string &s) : Sales_data(s, 0, 0) {}
-  Sales_data(std::istream &is) : Sales_data();
+  Sales_data(std::istream &is) : Sales_data() {};
 
   std::string isbn(){
     return bookNo;
@@ -36,10 +36,6 @@ private:
   unsigned units_sold = 0;
   double revenue = 0.0;
 };
-
-Sales_data::Sales_data(std::istream& is) {
-  read(is, *this);
-}
 
 Sales_data& add(Sales_data& lhs,Sales_data& rhs){
   Sales_data &sum = lhs;
